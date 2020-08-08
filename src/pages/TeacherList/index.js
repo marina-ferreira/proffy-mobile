@@ -3,6 +3,8 @@ import { View, Image, Text, TouchableOpacity , ImageBackground} from 'react-nati
 import { RectButton } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 
+import PageHeader from '../../components/PageHeader'
+
 import teachImg from '../../assets/images/give-classes-background.png'
 
 import styles from './styles'
@@ -12,23 +14,7 @@ const TeacherList = () => {
 
   return (
     <View style={styles.container}>
-      {/* <ImageBackground
-        source={teachImg}
-        style={styles.imgBg}
-        resizeMode="contain"
-      >
-        <Text style={styles.title}>Do you want to be a Proffy?</Text>
-        <Text style={styles.description}>
-          To get started, you need to register a teacher account on the web platform.
-        </Text>
-      </ImageBackground> */}
-
-      <RectButton
-        onPress={goBack}
-        style={styles.okButton}
-      >
-        <Text style={styles.okButtonText}>Register</Text>
-      </RectButton>
+      <PageHeader title="Available Proffys" />
     </View>
   )
 }
