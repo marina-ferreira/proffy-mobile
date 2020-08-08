@@ -8,7 +8,7 @@ import logoImg from '../../assets/images/logo.png'
 
 import styles from './styles'
 
-const PageHeader = ({ title, description, children }) => {
+const PageHeader = ({ title, children, headerRight }) => {
   const { navigate } = useNavigation()
 
   return (
@@ -21,7 +21,10 @@ const PageHeader = ({ title, description, children }) => {
         <Image source={logoImg} resizeMode="contain" />
       </View>
 
-      <Text style={styles.title}>{title}</Text>
+      <View style={styles.header}>
+        <Text style={styles.title}>{title}</Text>
+        {headerRight}
+      </View>
 
       {children}
     </View>

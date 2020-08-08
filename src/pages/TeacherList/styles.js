@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
 
   searchForm: {
-    marginBottom: 0
+    marginBottom: 24
   },
 
   label: {
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   inputGroup: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 24
+    marginBottom: 16
   },
 
   inputBlock: {
