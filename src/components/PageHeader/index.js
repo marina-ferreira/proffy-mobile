@@ -22,6 +22,8 @@ const PageHeader = ({ title, description, children }) => {
       </View>
 
       <Text style={styles.title}>{title}</Text>
+
+      {children}
     </View>
   )
 }
