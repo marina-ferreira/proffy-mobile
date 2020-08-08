@@ -27,7 +27,7 @@ const Teach = () => {
         onPress={goBack}
         style={styles.okButton}
       >
-        <Text style={styles.okButtonText}>Register</Text>
+        <Text style={styles.okButtonText}>Got it!</Text>
       </RectButton>
     </View>
   )
