@@ -3,6 +3,8 @@ import { View, ScrollView, Text, TextInput } from 'react-native'
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler'
 import { Feather } from '@expo/vector-icons'
 
+import api from '../../services/api'
+
 import PageHeader from '../../components/PageHeader'
 import TeacherItem from '../../components/TeacherItem'
 
@@ -10,6 +12,21 @@ import styles from './styles'
 
 const TeacherList = () => {
   const [isFilterVisible, setIsFilterVisible] = useState(false)
+  const [subject, setSubject] = useState('')
+  const [weekDay, setWeekDay] = useState('')
+  const [time, setTime] = useState('')
+  const [teachers, setTeachers] = useState([])
+
+  const handleSubmit = () => {
+    if (!subject || !weekDay || !time) return
+
+    api.get('/classes', { params: { subject, week_day: weekDay, time } })
+      .then(response => {
+        setTeachers(response.data)
+        setIsFilterVisible(false)
+      })
+      .catch(error => console.log(error))
+  }
 
   return (
     <View style={styles.container}>
@@ -28,6 +45,8 @@ const TeacherList = () => {
               style={styles.input}
               placeholder="What is the subject?"
               placeholderTextColor="#c1bccc"
+              value={subject}
+              onChangeText={text => setSubject(text)}
             />
 
             <View style={styles.inputGroup}>
@@ -37,6 +56,8 @@ const TeacherList = () => {
                   style={styles.input}
                   placeholder="What is the day?"
                   placeholderTextColor="#c1bccc"
+                  value={weekDay}
+                  onChangeText={text => setWeekDay(text)}
                 />
               </View>
 
@@ -46,11 +67,13 @@ const TeacherList = () => {
                   style={styles.input}
                   placeholder="At what time?"
                   placeholderTextColor="#c1bccc"
+                  value={time}
+                  onChangeText={text => setTime(text)}
                 />
               </View>
             </View>
 
-            <RectButton style={styles.submitButton}>
+            <RectButton style={styles.submitButton} onPress={handleSubmit}>
               <Text style={styles.submitButtonText}>Filter</Text>
             </RectButton>
           </View>
@@ -64,13 +87,9 @@ const TeacherList = () => {
           paddingBottom: 16,
         }}
       >
-        <TeacherItem />
-        <TeacherItem />
-        <TeacherItem />
-        <TeacherItem />
-        <TeacherItem />
-        <TeacherItem />
-        <TeacherItem />
+        {teachers.map(teacher => (
+          <TeacherItem key={teacher.id} teacher={teacher} />
+        ))}
       </ScrollView>
     </View>
   )

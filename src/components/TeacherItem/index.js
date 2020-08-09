@@ -8,29 +8,29 @@ import whatsappIcon from '../../assets/images/icons/whatsapp.png'
 
 import styles from './styles'
 
-const TeacherItem = () => {
+const TeacherItem = ({ teacher }) => {
+  const { subject, cost, name, avatar, whatsapp, bio } = teacher
+
   return (
     <View style={styles.container}>
       <View style={styles.profile}>
         <Image
-          source={{ url: 'https://github.com/marina-ferreira.png' }}
+          source={{ url: avatar }}
           style={styles.avatar}
         />
 
         <View style={styles.profileInfo}>
-          <Text style={styles.name}>Marina Ferreira</Text>
-          <Text style={styles.subject}>Sciences</Text>
+          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.subject}>{subject}</Text>
         </View>
       </View>
 
-      <Text style={styles.bio}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate explicabo quia at reprehenderit magnam nostrum! Illum harum quisquam asperiores! Et alias porro tempore. Deserunt accusantium suscipit temporibus.
-      </Text>
+      <Text style={styles.bio}>{bio}</Text>
 
       <View style={styles.footer}>
         <Text style={styles.price}>
           Hour rate {'  '}
-          <Text style={styles.priceValue}>R$ 20,00</Text>
+          <Text style={styles.priceValue}>R$ {cost}</Text>
         </Text>
 
         <View style={styles.buttonContainer}>
@@ -41,7 +41,7 @@ const TeacherItem = () => {
 
           <RectButton style={styles.contactButton}>
             <Image source={whatsappIcon} />
-            <Text style={styles.contactButtonText}>Send Message</  Text>
+            <Text style={styles.contactButtonText}>Send Message</Text>
           </RectButton>
         </View>
       </View>
