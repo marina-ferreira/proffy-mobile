@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, ScrollView, Text, TextInput } from 'react-native'
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler'
 import { Feather } from '@expo/vector-icons'
+import AsyncStorage from '@react-native-community/async-storage'
 
 import api from '../../services/api'
 
@@ -16,9 +17,21 @@ const TeacherList = () => {
   const [weekDay, setWeekDay] = useState('')
   const [time, setTime] = useState('')
   const [teachers, setTeachers] = useState([])
+  const [favoriteIds, setFavoriteIds] = useState([])
+
+  const loadFavorites = () => {
+    AsyncStorage.getItem('favorites').then(response => {
+      if (!response) return
+
+      const ids = JSON.parse(response).map(({ id }) => id)
+      setFavoriteIds(ids)
+    })
+  }
 
   const handleSubmit = () => {
     if (!subject || !weekDay || !time) return
+
+    loadFavorites()
 
     api.get('/classes', { params: { subject, week_day: weekDay, time } })
       .then(response => {
@@ -88,7 +101,11 @@ const TeacherList = () => {
         }}
       >
         {teachers.map(teacher => (
-          <TeacherItem key={teacher.id} teacher={teacher} />
+          <TeacherItem
+            key={teacher.id}
+            teacher={teacher}
+            favorited={favoriteIds.includes(teacher.id)}
+          />
         ))}
       </ScrollView>
     </View>
