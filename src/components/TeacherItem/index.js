@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Image, Text } from 'react-native'
+import { View, Image, Text, Linking } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 
 import heartOutlineIcon from '../../assets/images/icons/heart-outline.png'
@@ -10,6 +10,10 @@ import styles from './styles'
 
 const TeacherItem = ({ teacher }) => {
   const { subject, cost, name, avatar, whatsapp, bio } = teacher
+
+  const handleWhatsapp = () => {
+    Linking.openURL(`whatsapp://send?phone=${teacher.whatsapp}`)
+  }
 
   return (
     <View style={styles.container}>
@@ -39,7 +43,7 @@ const TeacherItem = ({ teacher }) => {
             <Image source={unfavoriteIcon} />
           </RectButton>
 
-          <RectButton style={styles.contactButton}>
+          <RectButton onPress={handleWhatsapp} style={styles.contactButton}>
             <Image source={whatsappIcon} />
             <Text style={styles.contactButtonText}>Send Message</Text>
           </RectButton>
