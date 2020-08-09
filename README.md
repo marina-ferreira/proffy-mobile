@@ -25,15 +25,17 @@
   <a href="#rocket-dependencies">Dependencies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#link-links">Links</a>
 </p>
+<br />
 
-<p align="center" style="margin: 40px 0">
+<p align="center">
   <img alt="Proffy Landing Page" height="250px" src="./.github/landing.jpg" style="margin: 0 5px" />
   <img alt="Proffy Filter Page" height="250px" src="./.github/filter.jpg" style="margin: 0 5px" />
   <img alt="Proffy Teacher List Page" height="250px" src="./.github/teacher-list.jpg" style="margin: 0 5px" />
   <img alt="Proffy Teacher List Page" height="250px" src="./.github/teacher-list-2.jpg" style="margin: 0 5px" />
   <img alt="Proffy Teacher List Page" height="250px" src="./.github/favorites.jpg" style="margin: 0 5px" />
   <img alt="Proffy Teacher List Page" height="250px" src="./.github/teach.jpg" style="margin: 0 5px" />
-<p>
+</p>
+<br />
 
 ## :bookmark: About
 
